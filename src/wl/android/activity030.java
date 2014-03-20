@@ -63,7 +63,7 @@ public class activity030 extends Activity {
 				SimpleDraw(Y_axis.length - 1);// 直接绘制正弦波
 			} else if (v == btnTimerDraw) {
 				oldY = centerY;
-				mTimer.schedule(mTimerTask, 0, 5);// 动态绘制正弦波
+				mTimer.schedule(mTimerTask, 0, 1);// 动态绘制正弦波
 			}
 		}
 	}
@@ -87,7 +87,8 @@ public class activity030 extends Activity {
 	void SimpleDraw(int length) {
 		if (length == 0)
 			oldX = 0;
-		Canvas canvas = sfh.lockCanvas(new Rect(oldX, 0, oldX + length,
+//		Canvas canvas = sfh.lockCanvas(new Rect(oldX, 0, oldX + length,
+		Canvas canvas = sfh.lockCanvas(new Rect(oldX, 0, oldX + 2,
 				getWindowManager().getDefaultDisplay().getHeight()));
 		// 关键:获取画布
 		Log.i("Canvas:",
@@ -103,6 +104,8 @@ public class activity030 extends Activity {
 			oldX = i;
 			oldY = y;
 		}
+		Log.i("Canvas2:", String.valueOf(oldX)+	"," + String.valueOf(length));
+
 		sfh.unlockCanvasAndPost(canvas);// 解锁画布，提交画好的图像
 	}
 
